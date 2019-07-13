@@ -1,0 +1,23 @@
+[
+    {
+        "color": "White",
+        "brand": "Kia",
+        "line": "Picanto",
+        "model": "2017",
+        "license_plate": "IDN923"
+    },
+    {
+        "color": "Red",
+        "brand": "Kia",
+        "line": "Sorento",
+        "model": "2017",
+        "license_plate": "IDN924"
+    },
+    {
+        "color": "black",
+        "brand": "Hyundai",
+        "line": "Veloster",
+        "model": "2019",
+        "license_plate": "PLZ829"
+    }
+]
