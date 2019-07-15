@@ -1,7 +1,7 @@
 // Requires
-var express = require('express');
+const express = require('express');
 
-var app = express();
+const app = express();
 
 // Routes
 app.get('/', function(req, res) {

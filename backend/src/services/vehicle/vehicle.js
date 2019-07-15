@@ -1,13 +1,13 @@
 // Requires
-var express = require('express');
-var app = express();
-var vehicles = require('../../data/vehicle-model.json')
+const express = require('express');
+const app = express();
+let vehicles = require('../../data/vehicle-model.json')
 
 // Import utils
-var utils = require('../../utils/utils');
+const utils = require('../../utils/utils');
 
 // Global variables
-var pathFileData = './src/data/vehicle-model.json';
+const pathFileData = './src/data/vehicle-model.json';
 
 // Get all vehicles
 app.get('/', (req, res) => {
@@ -29,8 +29,9 @@ app.get('/', (req, res) => {
 // Get vehicle by any propierty
 app.get('/filterVehicle', (req, res) => {
     
-    var expectFilterType = ['color', 'brand', 'line', 'model', 'license_plate'],
-        filterType = req.query.filterType,
+    const expectFilterType = ['color', 'brand', 'line', 'model', 'license_plate'];
+    
+    let filterType = req.query.filterType,
         filterValue = req.query.filterValue;
 
     if(expectFilterType.includes(filterType)) {
@@ -58,15 +59,15 @@ app.get('/filterVehicle', (req, res) => {
 
 // Create a new vehicle
 app.post('/create', (req, res) => {
-
-    var color = req.body.color,
+    
+    let color = req.body.color,
         brand = req.body.brand,
         line = req.body.line,
         model = req.body.model,
         licensePlate = req.body.licensePlate;
 
     if(color && brand && line && model && licensePlate){
-        var newVehicle = {
+        let newVehicle = {
             color,
             brand,
             line,
@@ -95,14 +96,14 @@ app.post('/create', (req, res) => {
 // Update a vehicle by license plate
 app.post('/update', (req, res) => {
 
-    var licensePlate = req.body.licensePlate,
+    let licensePlate = req.body.licensePlate,
         color = req.body.color,
         brand = req.body.brand,
         line = req.body.line,
         model = req.body.model;
 
     if(licensePlate){
-        var index = vehicles.findIndex( (result) => {
+        const index = vehicles.findIndex( (result) => {
             return String(result.license_plate).toUpperCase() === String(licensePlate).toUpperCase()
         });
         
@@ -135,16 +136,17 @@ app.post('/update', (req, res) => {
 
 // Delete one vehicle by license plate
 app.post('/delete', (req, res) => {
-    var licensePlate = req.body.licensePlate;
+    const licensePlate = req.body.licensePlate;
 
     if(licensePlate){
-        var index = vehicles.findIndex( (result) => {
+        const index = vehicles.findIndex( (result) => {
             return String(result.license_plate).toUpperCase() === licensePlate.toUpperCase()
         });
         
         if(index > -1) {
+            
             vehicles = vehicles.filter( (result) => {
-                return String(result.license_plate).toUpperCase() !== String(licensePlate)
+                return String(result.license_plate).toUpperCase() !== String(licensePlate).toUpperCase()
             });
 
             // Write in JSON file

@@ -1,5 +1,6 @@
-var rootService = require('../services/root/root');
-var vehicleService = require('../services/vehicle/vehicle');
+// Import services
+const rootService = require('../services/root/root');
+const vehicleService = require('../services/vehicle/vehicle');
 
 module.exports = (expressApp) => {
     expressApp.use('/', rootService);

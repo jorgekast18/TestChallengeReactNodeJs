@@ -1,17 +1,20 @@
 // Load modules express and body-parser
-var express = require('express');
-var bodyParser = require('body-parser');
-var config = require('./config/config');
-
+const express = require('express');
+const bodyParser = require('body-parser');
+const config = require('./config/config');
+const cors = require('cors');
 // Initialize express app
-var app = express();
+const app = express();
 
 // Configure body parser to convert request in JSON
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
+// Initialize cors
+app.use(cors());
+
 // Import routes
-var routes = require('./api/routes'); 
+const routes = require('./api/routes'); 
 
 // load routes
 routes(app);

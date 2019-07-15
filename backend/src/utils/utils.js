@@ -4,7 +4,7 @@ var fileSystem = require('fs');
 function filterVehicle(array, filterType, filterValue) {
     return new Promise((resolve, reject) => {
         const data = array.filter((result) => {
-            return result[filterType].toUpperCase() === filterValue.toUpperCase()
+            return result[filterType].toUpperCase().indexOf(filterValue.toUpperCase()) > -1
         })
 
         if (!data || data.length === 0) {
